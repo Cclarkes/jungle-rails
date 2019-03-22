@@ -6,9 +6,31 @@
   </head>
   <body>
     <h1>Thank you for your purchase, <%= @user.name %></h1>
-    <p>
-      You have successfully placed an order.
-      <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |item| %>
+          <%= render 'item', product: item.product, quantity: item[:quantity].to_i%>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= @order[:total_cents] / 100.0 %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
     </p>
   </body>
 </html>
