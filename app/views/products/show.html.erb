@@ -28,4 +28,50 @@
 
   </article>
 
+  <article class="reviews">
+  <% if current_user %>
+  <%= form_for :reviews, url: "/products/#{@product.id}/reviews", html: {class: "review_form"} do |f| %>
+  <%= f.text_area :description, size: "35x4" %>
+  <%= f.select :rating, [[1,1], [2,2], [3,3], [4,4], [5,5]] %>
+  <%= f.submit "Create" %>
+<% end %>
+<% else %>
+  <h4 class="no_review">
+  <%= "Please sign in to post a product review." %>
+  </h4>
+  <%end%>
+  <div class="row">
+    <dl class="dl-horizontal">
+      <dt>
+      <h3>Reviews</h3>
+      </dt>
+      <br>
+        <% if @product.reviews != [] %>
+      <dd>
+      <% @product.reviews.each do |rev| %>
+      <br>
+        <div class="review">
+        <h4>
+          <%= rev.user ? rev.user.name : "Anonymous" %>
+        </h4>
+          <%= rev.description %>
+          <br>
+          <%= "Rating: " + rev.rating.to_s + " out of 5." %>
+          <% if current_user && rev.user && current_user.name == rev.user.name %>
+            <%= form_for :reviews, url: "/products/#{@product.id}/reviews/#{rev.id}", html: {class: "btn btn-danger"}, method: :delete do |f| %>
+            <%= f.submit "Destroy" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <% else %>
+      <br>
+      <br>
+      <p class="first-review">
+      <%= "Be the first to post a review!" %>
+      </p>
+      <% end %>
+    </dl>
+  </div>
+  
 </section>

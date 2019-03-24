@@ -76,6 +76,27 @@ main section.categories-show {
   }
 }
 
+  .review {
+    border-style: ridge;
+    margin-top: 10px;
+  }
+
+  .first-review {
+    margin-left: 50px;
+  }
+
+  .no_review {
+    margin-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .review_form {
+    margin-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
 main section.products-show {
 
   .product-detail {

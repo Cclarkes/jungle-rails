@@ -29,6 +29,22 @@ cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
+## REVIEWS
+
+Review.create({
+  product_id: 11,
+  user_id: 1,
+  description: "This is the worst purchase I have ever made",
+  rating: 1
+})
+
+Review.create({
+  product_id: 11,
+  user_id: 1,
+  description: "I'll say it again - This is the worst purchase I have ever made",
+  rating: 1
+})
+
 ## PRODUCTS
 
 puts "Re-creating Products ..."
