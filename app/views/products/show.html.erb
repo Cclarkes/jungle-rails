@@ -22,6 +22,16 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt>Average Rating</dt>
+          <% avg = 0 %>
+          <% if @product.reviews != [] %>
+          <% @product.reviews.each do |rev| %>
+          <% avg += rev.rating %>
+          <% end %>
+          <dd> <%= avg / @product.reviews.length %> </dd>
+          <% else %>
+          <dd> Not yet reviewed. <dd>
+          <% end %>
         </dl>
       </div>
     </div>
