@@ -58,7 +58,7 @@
           <br>
           <%= "Rating: " + rev.rating.to_s + " out of 5." %>
           <% if current_user && rev.user && current_user.name == rev.user.name %>
-            <%= form_for :reviews, url: "/products/#{@product.id}/reviews/#{rev.id}", html: {class: "btn btn-danger"}, method: :delete do |f| %>
+            <%= form_for :reviews, url: "/products/#{@product.id}/reviews/#{rev.id}", method: :delete do |f| %>
             <%= f.submit "Destroy" %>
             <% end %>
           <% end %>

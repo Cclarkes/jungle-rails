@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_filter :only => [:create, :destroy]
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
@@ -15,7 +16,8 @@ class ReviewsController < ApplicationController
 
   end
 
-  private
+  protected 
+
   def review_params
     params.require(:reviews).permit(:description, :rating, :id)
   end 
