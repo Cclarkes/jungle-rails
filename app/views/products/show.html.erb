@@ -28,7 +28,7 @@
           <% @product.reviews.each do |rev| %>
           <% avg += rev.rating %>
           <% end %>
-          <dd> <%= avg / @product.reviews.length %> </dd>
+          <dd> <%= (avg / @product.reviews.length.to_f).round(2) %> </dd>
           <% else %>
           <dd> Not yet reviewed. <dd>
           <% end %>
