@@ -40,8 +40,8 @@
 
   <article class="reviews">
   <% if current_user %>
-  <%= form_for :reviews, url: "/products/#{@product.id}/reviews", html: {class: "review_form"} do |f| %>
-  <%= f.text_area :description, size: "35x4" %>
+  <%= form_for :reviews, url: "/products/#{@product.id}/reviews" do |f| %>
+  <%= f.text_area :description, size: "35x4",  class: "review_form", placeholder: "Enter a review here" %>
   <%= f.select :rating, [[1,1], [2,2], [3,3], [4,4], [5,5]] %>
   <%= f.submit "Create" %>
 <% end %>
