@@ -100,7 +100,7 @@ RSpec.describe User, type: :model do
       it "should verify there's no white space" do
       @user.email = " connor@gmail.com "
       @user.valid?
-      expect(@user.errors.full_messages).to include ("Something")
+      expect(@user.errors.full_messages).to include ("Email must contain no white spaces")
     end
 
   end
